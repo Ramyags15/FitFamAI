@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+const authRouter = require('./routes/users');
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -19,7 +19,8 @@ app.get('/', (req, res) => res.send('Fitness Prototype API is running'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/workouts', require('./routes/workouts'));
 app.use('/api/nutrition', require('./routes/nutrition'));
-
+app.use('/api/auth', authRouter);
+app.get('/', (req,res) => res.send('Fitness Prototype API'));
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 

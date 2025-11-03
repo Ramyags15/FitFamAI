@@ -1,68 +1,33 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* fitness/frontend/src/index.css */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* Tailwind base / components / utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ---------- Custom styles ---------- */
+
+/* hero background (blue with subtle gradient) */
+.hero-section {
+  /* these are standard tailwind color values but in plain CSS we use hex */
+  background: linear-gradient(90deg, #0467d6 0%, #007bff 50%, #0b5ed7 100%);
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* phone image sizing - responsive and centered */
+.hero-phone {
+  width: 320px;       /* medium size on desktop */
+  max-width: 40vw;    /* responsive */
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(2,6,23,0.45);
+  object-fit: contain;
 }
 
+/* ensure body background behind hero is dark-blue so navbar logo is visible */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #0b5ed7; /* fallback */
 }
