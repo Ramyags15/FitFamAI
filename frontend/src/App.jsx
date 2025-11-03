@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import './App.css'; 
 import NutritionPage from './components/NutritionPage';
+import ChatBox from './components/ChatBox'; // <--- ADD THIS
 // --- Components ---
 // 1. Landing Page (Your original component content)
 const LandingPage = () => {
@@ -256,10 +257,7 @@ const DashboardPage = ({ user, logout }) => {
       </nav>
       <div className="dashboard-grid">
         {/* Row 1: Group Chat and AI Helper */}
-        <div className="chat-box card dark-card">
-          <h3>💬 Group Chat (Socket.io)</h3>
-          <p>Realtime chat goes here...</p>
-        </div>
+        <ChatBox user={user} />
         <div className="ai-tasks card dark-card">
           <h3>🤖 AI Coach Tasks</h3>
           <p>AI will assign daily tasks here...</p>
