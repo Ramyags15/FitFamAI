@@ -8,6 +8,7 @@ const http = require('http'); // 1. Import HTTP module
 const { Server } = require('socket.io');
 const server = http.createServer(app);
 const PROTOTYPE_ROOM = 'fitfam_group';
+const taskRouter = require('./routes/tasks');
 const io = new Server(server, {
     cors: {
         origin: "http://localhost:5173", // Allow connections from your React frontend
@@ -49,6 +50,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/workouts', require('./routes/workouts'));
 app.use('/api/nutrition', require('./routes/nutrition'));
 app.use('/api/auth', authRouter);
+app.use('/api/tasks', taskRouter);
 app.get('/', (req,res) => res.send('Fitness Prototype API'));
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

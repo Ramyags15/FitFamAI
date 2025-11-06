@@ -483,3 +483,130 @@ html {
 .chat-send-btn:hover {
     background-color: #ff3a17;
 }
+/* --- AI TASKS STYLES (Day 8) --- */
+.task-details {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #444;
+}
+.task-description {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+.task-category {
+    font-size: 0.9em;
+    color: #bbb;
+}
+.proof-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: white;
+    box-sizing: border-box;
+}
+.task-submitted-message {
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    border: 2px solid var(--secondary-color);
+    text-align: center;
+}
+.message-success {
+    color: #2ecc71;
+    font-weight: 500;
+}
+.task-submitted-message p {
+    margin: 5px 0;
+}
+
+
+/* --- LEADERBOARD STYLES (Day 8) --- */
+.ranking-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+.ranking-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+}
+.ranking-item:last-child {
+    border-bottom: none;
+}
+.rank-number {
+    font-size: 1.2em;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: left;
+}
+.rank-1 { color: gold; }
+.rank-2 { color: silver; }
+.rank-3 { color: #cd7f32; }
+.rank-name {
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 15px;
+}
+.rank-points {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+.refresh-btn {
+    margin-top: 20px;
+    padding: 8px 20px;
+    font-size: 0.9em;
+}
+
+/* Update Dashboard Grid slightly to account for the new components */
+.dashboard-grid {
+    /* Ensure the log area is still available for future use */
+    grid-template-areas:
+        "chatbox tasks"
+        "chatbox log"
+        "chatbox leaderboard";
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto 1fr; /* Adjust rows */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.chat-box { grid-area: chatbox; min-height: 650px !important; }
+.ai-tasks { grid-area: tasks; min-height: 250px !important; }
+.log-area { grid-area: log; min-height: 150px !important; }
+.leaderboard { grid-area: leaderboard; min-height: 250px !important; }
+/* --- AI Pop-up Style --- */
+.ai-message-pop {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #90ee90; /* A light green color for the AI message */
+    text-align: center;
+    padding: 10px;
+    background-color: #3f556d;
+    border-radius: 8px;
+}
+/* --- Champion Banner Style --- */
+.weekly-champion-banner {
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #1c1c1c, #333333);
+    border: 2px solid gold;
+    border-radius: 10px;
+}
+.weekly-champion-banner h4 {
+    color: gold;
+    margin: 5px 0 0 0;
+    font-size: 1.4em;
+}
+.weekly-champion-banner p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #ccc;
+}

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import './App.css'; 
 import NutritionPage from './components/NutritionPage';
-import ChatBox from './components/ChatBox'; // <--- ADD THIS
+import ChatBox from './components/ChatBox';
+import AITasks from './components/AITasks';     
+import Leaderboard from './components/Leaderboard'; 
+// You should already have: import ChatBox from './components/ChatBox'; // <--- ADD THIS
 // --- Components ---
 // 1. Landing Page (Your original component content)
 const LandingPage = () => {
@@ -247,8 +250,32 @@ const AuthPage = ({ setUser }) => {
 
 // 3. Dashboard Component (Shell only for now)
 const DashboardPage = ({ user, logout }) => {
-  if (!user) return null; 
+  
+  const aiSuggestions = [
+        "💧 Stay hydrated! Drink a glass of water now.",
+        "🍎 Aim for at least 5 servings of vegetables today.",
+        "🧘 Take a 5-minute break to stretch your neck and shoulders.",
+        "💪 Schedule your most challenging workout for the morning.",
+        "😴 Prioritize sleep tonight—it's crucial for muscle repair!",
+        "🚶 Get up and walk for 10 minutes every 2 hours.",
+    ];
+    const [aiMessage, setAiMessage] = useState(aiSuggestions[0]);
+    // ----------------------------------------------------
 
+    // --- 2. ADD useEffect HOOK FOR ROTATING MESSAGE ---
+    useEffect(() => {
+        // Start cycling through suggestions every 10 seconds (10000ms)
+        const interval = setInterval(() => {
+            setAiMessage(prevMessage => {
+                const currentIndex = aiSuggestions.indexOf(prevMessage);
+                const nextIndex = (currentIndex + 1) % aiSuggestions.length;
+                return aiSuggestions[nextIndex];
+            });
+        }, 10000); // Change message every 10 seconds
+
+        return () => clearInterval(interval); // Cleanup interval on component unmount
+    }, [aiSuggestions]);
+    if (!user) return null;
   return (
     <div className="dashboard-container padded-section light-bg">
       <nav className='dashboard-nav'>
@@ -258,19 +285,13 @@ const DashboardPage = ({ user, logout }) => {
       <div className="dashboard-grid">
         {/* Row 1: Group Chat and AI Helper */}
         <ChatBox user={user} />
-        <div className="ai-tasks card dark-card">
-          <h3>🤖 AI Coach Tasks</h3>
-          <p>AI will assign daily tasks here...</p>
-        </div>
+        <AITasks user={user} />
         {/* Row 2: Workout/Nutrition Logging and Leaderboard */}
-        <div className="log-area card dark-card">
-          <h3>🏋️ Log Activity</h3>
-          <p>Workout/Nutrition logging forms...</p>
+        <div className="log-area card dark-card" style={{ backgroundColor: '#2e3d50' }}>
+           <h3>✨ AI Coach Says...</h3>
+           <p className="ai-message-pop">{aiMessage}</p> {/* Display the rotating message */}
         </div>
-        <div className="leaderboard card dark-card">
-          <h3>🏆 Leaderboard</h3>
-          <p>User rankings based on points...</p>
-        </div>
+       <Leaderboard />
       </div>
       <p style={{ marginTop: '50px' }}>
         This is your personalized dashboard. Let's build the features next!
