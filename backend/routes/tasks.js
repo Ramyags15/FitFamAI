@@ -5,27 +5,27 @@ const Proof = require('../models/Proof');
 const User = require('../models/User'); 
 
 
-// Function to get today's date at midnight UTC for comparison
+
 const getTodayStart = () => {
     const start = new Date();
     start.setUTCHours(0, 0, 0, 0);
     return start;
 };
-// --- API: GET Today's Task (Modified Logic) ---
+
 router.get('/today', async (req, res) => {
     try {
         const todayStart = getTodayStart();
 
-        // 1. Look for a task assigned today
+        
         let todayTask = await Task.findOne({
-            date: { $gte: todayStart } // Find tasks created since midnight today
-        }).sort({ date: 1 }); // If multiple, take the oldest one created today
+            date: { $gte: todayStart } 
+        }).sort({ date: 1 }); 
 
-        // 2. If no task exists for today, create a new one (Mock AI assignment)
+       
         if (!todayTask) {
             console.log("No task for today found. Creating new mock task...");
             
-            // Define a pool of potential tasks
+          
             const taskPool = [
                 { description: "Complete a 30-minute cardio session (run/walk/bike).", category: "Cardio", maxPoints: 15 },
                 { description: "Drink 2 liters of water before 5 PM.", category: "Hydration", maxPoints: 8 },
@@ -34,14 +34,14 @@ router.get('/today', async (req, res) => {
                 { description: "Prepare a meal consisting primarily of lean protein and vegetables.", category: "Nutrition", maxPoints: 10 },
             ];
             
-            // Pick a random task from the pool
+            
             const randomTask = taskPool[Math.floor(Math.random() * taskPool.length)];
 
             todayTask = new Task({
                 description: randomTask.description,
                 category: randomTask.category,
                 maxPoints: randomTask.maxPoints,
-                date: new Date() // Set creation date to now
+                date: new Date() 
             });
             await todayTask.save();
         }
@@ -53,14 +53,12 @@ router.get('/today', async (req, res) => {
     }
 });
 
-// --- API: SUBMIT Proof ---
-// NOTE: For the prototype, we auto-award points and set status to 'Complete'
 router.post('/submit', async (req, res) => {
-    // Requires: userId (from frontend state), taskId, photoUrl (mocked string)
+   
     const { userId, taskId, photoUrl } = req.body; 
 
     try {
-        // 1. Check if the user has already completed this task today (optional check, but good practice)
+       
         const existingProof = await Proof.findOne({ userId, taskId });
         if (existingProof) {
             return res.status(400).json({ msg: 'You have already submitted proof for this task.' });
@@ -69,17 +67,15 @@ router.post('/submit', async (req, res) => {
         const task = await Task.findById(taskId);
         if (!task) return res.status(404).json({ msg: 'Task not found' });
 
-        // 2. Create the Proof
         const newProof = new Proof({
             userId,
             taskId,
             photoUrl,
             pointsAwarded: task.maxPoints, 
-            status: 'Complete' // Instant completion for prototype
+            status: 'Complete' 
         });
         await newProof.save();
 
-        // 3. Update User's points
         await User.findByIdAndUpdate(userId, { 
             $inc: { points: task.maxPoints } 
         });
@@ -92,7 +88,7 @@ router.post('/submit', async (req, res) => {
     }
 });
 
-// --- API: GET Leaderboard (Top 10 users by points) ---
+
 router.get('/leaderboard', async (req, res) => {
     try {
         const leaderboard = await User.find({})

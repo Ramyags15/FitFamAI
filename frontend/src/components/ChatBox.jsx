@@ -1,33 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
-import '../App.css'; // For styling
+import '../App.css'; 
 
-const socket = io('http://localhost:5000'); // Connect to the backend Socket.io server
+const socket = io('http://localhost:5000'); 
 
 export default function ChatBox({ user }) {
     const [message, setMessage] = useState('');
     const [chatLog, setChatLog] = useState([]);
     const messagesEndRef = useRef(null);
-
-    // Auto-scroll to the latest message
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-    // Connect and set up listeners
+    
     useEffect(() => {
-        // Listen for received messages
+    
         socket.on('receiveMessage', (data) => {
             setChatLog((prevLog) => [...prevLog, data]);
         });
         
-        // Cleanup on component unmount
+        
         return () => {
             socket.off('receiveMessage');
         };
     }, []);
 
-    // Scroll every time the chatLog updates
+
     useEffect(() => {
         scrollToBottom();
     }, [chatLog]);
@@ -42,7 +40,7 @@ export default function ChatBox({ user }) {
                 time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
             };
             
-            // Emit message to the server
+            
             socket.emit('sendMessage', messageData);
             setMessage('');
         }

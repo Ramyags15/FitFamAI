@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css'; // Import the main CSS
+import '../App.css'; 
 
 export default function NutritionPage() {
     return (
@@ -15,7 +15,7 @@ export default function NutritionPage() {
                 <p className="subtitle">Fuel your body with science-backed advice and personalized meal strategies.</p>
                 <div className="main-nutrition-content">
 
-                    {/* Section 1: Core Principles */}
+                    
                     <div className="core-principles-cards">
                         <div className="card dark-card">
                             <h3 className="text-gradient">Macro Tracking</h3>
@@ -31,7 +31,7 @@ export default function NutritionPage() {
                         </div>
                     </div>
 
-                    {/* Section 2: Nutrition Cards (Example Explanations) */}
+                    
                     <h2 className='text-gradient' style={{marginTop: '60px'}}>Essential Nutrition Breakdown</h2>
                     <div className="nutrition-breakdown-cards">
                         

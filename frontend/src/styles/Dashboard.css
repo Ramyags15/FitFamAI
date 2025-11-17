@@ -1,4 +1,4 @@
-/* frontend/src/styles/Dashboard.css */
+
 
 .dashboard-container {
     padding: 30px 50px;
@@ -14,18 +14,18 @@
 }
 
 .dashboard-header h1 {
-    color: var(--primary-color); /* Use your defined CSS variables */
+    color: var(--primary-color);
 }
 
 .dashboard-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* Task | Chat | Leaderboard */
+    grid-template-columns: 1fr 2fr 1fr; 
     gap: 30px;
     align-items: start;
 }
 
 .dashboard-section {
-    background-color: var(--card-bg); /* Use your defined CSS variables */
+    background-color: var(--card-bg); 
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -50,7 +50,7 @@
     padding: 15px;
     overflow-y: auto;
     margin-bottom: 15px;
-    flex-grow: 1; /* Allows it to fill space above the input */
+    flex-grow: 1; 
 }
 
 .chat-input {
@@ -87,7 +87,7 @@
 }
 
 .ai-popup {
-    background-color: #3a3f58; /* Darker background for AI popups */
+    background-color: #3a3f58; 
     color: white;
     padding: 15px;
     border-radius: 8px;

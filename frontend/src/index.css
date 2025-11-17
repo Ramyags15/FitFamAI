@@ -1,33 +1,29 @@
-/* fitness/frontend/src/index.css */
 
-/* Tailwind base / components / utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ---------- Custom styles ---------- */
 
-/* hero background (blue with subtle gradient) */
 .hero-section {
-  /* these are standard tailwind color values but in plain CSS we use hex */
+  
   background: linear-gradient(90deg, #0467d6 0%, #007bff 50%, #0b5ed7 100%);
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
 
-/* phone image sizing - responsive and centered */
+
 .hero-phone {
-  width: 320px;       /* medium size on desktop */
-  max-width: 40vw;    /* responsive */
+  width: 320px;       
+  max-width: 40vw;    
   height: auto;
   border-radius: 18px;
   box-shadow: 0 18px 40px rgba(2,6,23,0.45);
   object-fit: contain;
 }
 
-/* ensure body background behind hero is dark-blue so navbar logo is visible */
+
 body {
   margin: 0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: #0b5ed7; /* fallback */
+  background: #0b5ed7; 
 }

@@ -1,4 +1,4 @@
-// frontend/src/pages/Dashboard.jsx
+
 import React from 'react';
 
 export default function Dashboard({ user, onLogout }) {
@@ -9,9 +9,7 @@ export default function Dashboard({ user, onLogout }) {
       <h2>Welcome back, {user.name.split(' ')[0]}!</h2>
       <p>This is your AI Chat & Challenge Dashboard.</p>
       
-      {/* This is where we will embed the full Chat/Challenge system next.
-        For now, it's a simple placeholder.
-      */}
+     
       <div style={{ height: '500px', border: '1px solid #444', padding: '20px', backgroundColor: '#2d2d2d' }}>
         <h3>Group Chat / AI Feed</h3>
         <p>Chat system coming soon...</p>

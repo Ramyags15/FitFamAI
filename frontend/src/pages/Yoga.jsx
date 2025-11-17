@@ -1,4 +1,4 @@
-// src/pages/Profile.jsx
+
 import { useEffect, useState } from 'react';
 import api from '../api';
 

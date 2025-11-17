@@ -6,30 +6,24 @@ const API_URL = 'http://localhost:5000/api/tasks';
 export default function AITasks({ user }) {
     const [task, setTask] = useState(null);
     const [proofUrl, setProofUrl] = useState('');
-    // Use submitted proofs array to check if a user completed the task 
     const [submittedProofs, setSubmittedProofs] = useState([]); 
     const [message, setMessage] = useState('');
-
-    // State to determine if the task has been submitted by the current user
     const isTaskCompleted = submittedProofs.some(proof => 
         proof.taskId === task?._id && proof.userId === user._id
     );
 
-    // 1. Fetch Today's Task and User's Submission Status
+    
     useEffect(() => {
         const fetchTaskAndStatus = async () => {
             try {
-                // Fetch today's task
+                
                 const taskResponse = await fetch(`${API_URL}/today`);
                 const taskData = await taskResponse.json();
                 
                 if (taskData._id) {
                     setTask(taskData);
                     
-                    // In a real app, you would fetch only the current user's proof.
-                    // For simplicity, we assume we can fetch all proofs to check status.
-                    // (We'll skip fetching all proofs to maintain the prototype's speed and focus.)
-                    // Instead, we rely on the `isSubmitted` state after a successful POST.
+                   
                 }
             } catch (error) {
                 console.error("Error fetching task:", error);
@@ -39,7 +33,7 @@ export default function AITasks({ user }) {
         fetchTaskAndStatus();
     }, []);
 
-    // 2. Handle Proof Submission
+    
     const handleSubmitProof = async (e) => {
         e.preventDefault();
         setMessage('');
@@ -49,7 +43,7 @@ export default function AITasks({ user }) {
             return;
         }
 
-        // Mock URL if user leaves it empty (since we aren't doing real file uploads)
+        
         const mockPhotoUrl = proofUrl.trim() || `https://via.placeholder.com/300?text=Proof+by+${user.name}`;
 
         const submissionData = {
@@ -68,11 +62,9 @@ export default function AITasks({ user }) {
             const data = await response.json();
 
             if (response.ok) {
-                setMessage(data.msg); // Success message from backend
-                // Add the newly submitted proof to the list (or just mark as complete)
+                setMessage(data.msg); 
                 setSubmittedProofs([...submittedProofs, { taskId: task._id, userId: user._id, photoUrl: mockPhotoUrl }]);
                 setProofUrl(mockPhotoUrl);
-                // The backend automatically updated user points!
             } else {
                 setMessage(data.msg || 'Submission failed.');
             }
@@ -86,7 +78,7 @@ export default function AITasks({ user }) {
         return <div className="ai-tasks card dark-card"><h3>🤖 AI Coach Tasks</h3><p>Loading task...</p></div>;
     }
     
-    // Check completion status based on submittedProofs array
+    
     const completed = isTaskCompleted;
 
     return (
@@ -112,7 +104,7 @@ export default function AITasks({ user }) {
                         placeholder="e.g., photo URL or link"
                         value={proofUrl}
                         onChange={(e) => setProofUrl(e.target.value)}
-                        // Removed 'required' since we provide a mock default
+                
                     />
                     {message && <p className="error-text">{message}</p>}
                     <button type="submit" className="btn-gradient">

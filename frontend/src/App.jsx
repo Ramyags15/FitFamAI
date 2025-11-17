@@ -5,13 +5,13 @@ import NutritionPage from './components/NutritionPage';
 import ChatBox from './components/ChatBox';
 import AITasks from './components/AITasks';     
 import Leaderboard from './components/Leaderboard'; 
-// You should already have: import ChatBox from './components/ChatBox'; // <--- ADD THIS
-// --- Components ---
-// 1. Landing Page (Your original component content)
+import RoutinePage from './components/RoutinePage';
+import YogaPage from './components/YogaPage';
+import GamePage from './components/GamePage';
 const LandingPage = () => {
   return (
     <>
-      {/* NAVIGATION - Using Link for Routing */}
+      
       <nav id="main-nav">
           <div className="logo"><Link to="/">FitFam AI</Link></div>
           <div className="nav-links">
@@ -22,7 +22,7 @@ const LandingPage = () => {
             <Link to="/auth" id="nav-auth-button" className="btn-gradient">Sign Up / Login</Link>
           </div>
       </nav>
-      {/* HERO SECTION */}
+      
       <section id="landing-hero" className="padded-section dark-bg">
         <div className="hero-content">
           <h1>
@@ -32,7 +32,7 @@ const LandingPage = () => {
             Get personalized workout plans, nutrition guidance, and 24/7 AI
             coaching tailored specifically to your goals and lifestyle.
           </p>
-          {/* Change button to route to /auth */}
+          
           
           <div className='hero-image-wrap'>
             <div className="ai-coach-preview">FitAI Coach</div>
@@ -46,12 +46,12 @@ const LandingPage = () => {
         </div><br/>
       
       </section>
-      {/* FEATURES SECTION - STATIC CONTENT */}
+      
       <section id="features" className="padded-section light-bg">
         <h2 className="text-gradient">Our Premium Services</h2>
         <div className="feature-cards">
           <div className="card dark-card">
-            {/* Note: In a real React app, you would use a proper icon library */}
+           
             <div className="icon-gradient" style={{fontSize: '3em'}}>📊</div> 
             <h3>Progress Analytics</h3>
             <p>
@@ -76,11 +76,11 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      {/* SUCCESS STORIES - STATIC CONTENT */}
+      
       <section id="success-stories" className="padded-section light-bg">
         <h2 className="text-gradient">Success Stories</h2>
         <div className="story-cards">
-            {/* ... Testimonial Cards ... (Content from your original App.jsx) */}
+            
             <div className="card light-card">
                 <div className="testimonial-header">
                     <img src="https://via.placeholder.com/50/FF5733/FFFFFF?text=SJ" alt="Sarah Johnson" className="profile-pic" />
@@ -124,10 +124,10 @@ const LandingPage = () => {
                 </p>
             </div>
         </div>
-        {/* Scroll to top button */}
+        
         
       </section>
-      {/* FOOTER - STATIC CONTENT */}
+      
       <footer className="dark-bg">
         <div className="footer-content">
           <div className="footer-col">
@@ -163,7 +163,7 @@ const LandingPage = () => {
   );
 };
 
-// 2. Auth Page (Login/Signup Form)
+
 const AuthPage = ({ setUser }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState('');
@@ -171,7 +171,7 @@ const AuthPage = ({ setUser }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const API_URL = 'http://localhost:5000/api/auth'; // Ensure backend is running
+  const API_URL = 'http://localhost:5000/api/auth'; 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -193,10 +193,10 @@ const AuthPage = ({ setUser }) => {
         return;
       }
       
-      // On success, save user data and navigate
+      
       setUser(data.user);
-      localStorage.setItem('user', JSON.stringify(data.user)); // Simple state persistence
-      // The ProtectedRoute will handle navigation to /dashboard
+      localStorage.setItem('user', JSON.stringify(data.user)); 
+      
       
     } catch (err) {
       setError('Could not connect to the server.');
@@ -248,7 +248,7 @@ const AuthPage = ({ setUser }) => {
   );
 };
 
-// 3. Dashboard Component (Shell only for now)
+
 const DashboardPage = ({ user, logout }) => {
   
   const aiSuggestions = [
@@ -260,20 +260,18 @@ const DashboardPage = ({ user, logout }) => {
         "🚶 Get up and walk for 10 minutes every 2 hours.",
     ];
     const [aiMessage, setAiMessage] = useState(aiSuggestions[0]);
-    // ----------------------------------------------------
-
-    // --- 2. ADD useEffect HOOK FOR ROTATING MESSAGE ---
+    
     useEffect(() => {
-        // Start cycling through suggestions every 10 seconds (10000ms)
+        
         const interval = setInterval(() => {
             setAiMessage(prevMessage => {
                 const currentIndex = aiSuggestions.indexOf(prevMessage);
                 const nextIndex = (currentIndex + 1) % aiSuggestions.length;
                 return aiSuggestions[nextIndex];
             });
-        }, 10000); // Change message every 10 seconds
+        }, 10000); 
 
-        return () => clearInterval(interval); // Cleanup interval on component unmount
+        return () => clearInterval(interval); 
     }, [aiSuggestions]);
     if (!user) return null;
   return (
@@ -283,13 +281,13 @@ const DashboardPage = ({ user, logout }) => {
         <button onClick={logout} className="btn-gradient">Logout</button>
       </nav>
       <div className="dashboard-grid">
-        {/* Row 1: Group Chat and AI Helper */}
+       
         <ChatBox user={user} />
         <AITasks user={user} />
-        {/* Row 2: Workout/Nutrition Logging and Leaderboard */}
+       
         <div className="log-area card dark-card" style={{ backgroundColor: '#2e3d50' }}>
            <h3>✨ AI Coach Says...</h3>
-           <p className="ai-message-pop">{aiMessage}</p> {/* Display the rotating message */}
+           <p className="ai-message-pop">{aiMessage}</p> 
         </div>
        <Leaderboard />
       </div>
@@ -300,20 +298,20 @@ const DashboardPage = ({ user, logout }) => {
   );
 };
 
-// Protected Route Component
+
 const ProtectedRoute = ({ user, children }) => {
     if (!user) {
-        // Redirect to login if no user is logged in
+     
         return <Navigate to="/auth" replace />;
     }
-    // Render the dashboard if user is present
+    
     return children;
 };
 
 
-// Main App Component with State Management
+
 export default function App() {
-  // Try to load user from localStorage on initial load
+  
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem('user');
     return storedUser ? JSON.parse(storedUser) : null;
@@ -329,23 +327,23 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         
-        {/* Auth Route: Redirects to dashboard if logged in */}
+        
         <Route 
             path="/auth" 
             element={user ? <Navigate to="/dashboard" replace /> : <AuthPage setUser={setUser} />} 
         />
         
-        {/* Dashboard Route: Protected */}
+       
         <Route 
             path="/dashboard" 
             element={<ProtectedRoute user={user}><DashboardPage user={user} logout={logout} /></ProtectedRoute>} 
         />
 
-        {/* Static Pages (Empty shells for now, will be implemented later) */}
+      
         <Route path="/nutrition" element={<NutritionPage />} />
-        <Route path="/routine" element={<><h1>Sample 6D Routine Page (Coming Soon)</h1><Link to='/'>Back Home</Link></>} />
-        <Route path="/yoga" element={<><h1>Yoga Routines Page (Coming Soon)</h1><Link to='/'>Back Home</Link></>} />
-        <Route path="/game" element={<><h1>Game and Fun Page (Coming Soon)</h1><Link to='/'>Back Home</Link></>} />
+        <Route path="/routine" element={<RoutinePage />} /> 
+        <Route path="/yoga" element={<YogaPage />} />    
+        <Route path="/game" element={<GamePage />} />
       </Routes>
     </Router>
   );

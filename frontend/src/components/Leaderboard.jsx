@@ -6,8 +6,6 @@ const API_URL = 'http://localhost:5000/api/tasks';
 export default function Leaderboard() {
     const [rankings, setRankings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
-    // Fetch the top 10 rankings
     const fetchLeaderboard = async () => {
         try {
             const response = await fetch(`${API_URL}/leaderboard`);
@@ -22,9 +20,8 @@ export default function Leaderboard() {
 
     useEffect(() => {
         fetchLeaderboard();
-        // Set up a refresh interval to keep the board updated every 30 seconds
         const interval = setInterval(fetchLeaderboard, 30000); 
-        return () => clearInterval(interval); // Cleanup
+        return () => clearInterval(interval); 
     }, []);
 
     return (
