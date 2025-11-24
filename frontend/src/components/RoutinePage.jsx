@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import "../styles/Nutrition.css";
 // Define the static workout split data
 const workoutSplit = [
   { day: 'Day 1', focus: 'Push (Chest, Shoulders, Triceps)', exercises: 'Bench Press, Overhead Press, Lateral Raises, Tricep Pushdowns' },

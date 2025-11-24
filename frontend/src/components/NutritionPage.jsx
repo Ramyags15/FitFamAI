@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css'; 
+import "../styles/Nutrition.css";
 
 export default function NutritionPage() {
     return (
@@ -37,15 +37,15 @@ export default function NutritionPage() {
                         
                         <div className="card light-card-alt">
                             <h4>Protein Power</h4>
-                            <p>Essential for muscle repair and satiety. **Sources:** Chicken breast, lentils, whey protein, eggs.</p>
+                            <p>Essential for muscle repair and satiety. Sources: Chicken breast, lentils, whey protein, eggs.</p>
                         </div>
                         <div className="card light-card-alt">
                             <h4>Complex Carbs</h4>
-                            <p>The primary source of energy for intense workouts. **Sources:** Oatmeal, brown rice, sweet potatoes, whole-wheat bread.</p>
+                            <p>The primary source of energy for intense workouts. <br/>Sources: Oatmeal, brown rice, sweet potatoes, whole-wheat bread.</p>
                         </div>
                         <div className="card light-card-alt">
                             <h4>Healthy Fats</h4>
-                            <p>Crucial for hormone production and brain health. **Sources:** Avocados, nuts, seeds, olive oil.</p>
+                            <p>Crucial for hormone production and brain health. <br/>Sources: Avocados, nuts, seeds, olive oil.</p>
                         </div>
                         
                     </div>

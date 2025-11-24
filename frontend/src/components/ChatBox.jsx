@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
-import '../App.css'; 
+
 
 const socket = io('http://localhost:5000'); 
 
@@ -47,7 +47,7 @@ export default function ChatBox({ user }) {
     };
 
     return (
-        <div className="chat-box card dark-card">
+        <div className="chat-box cards">
             <h3>💬 FitFam Group Chat</h3>
             <div className="chat-messages-container">
                 {chatLog.map((msg, index) => (

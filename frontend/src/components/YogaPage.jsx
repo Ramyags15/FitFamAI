@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const yogaRoutines = [
     { 
+        id: "morning",
         title: "☀️ Morning Energy Flow", 
         duration: "20 min",
         focus: "Wake up the spine and build heat.",
@@ -10,6 +12,7 @@ const yogaRoutines = [
         color: '#ffc107',
     },
     { 
+        id: "sleep",
         title: "🌙 Deep Sleep Relaxation", 
         duration: "30 min",
         focus: "Calm the nervous system and release tension.",
@@ -17,6 +20,7 @@ const yogaRoutines = [
         color: '#673ab7',
     },
     { 
+        id: "stretch",
         title: "💪 Post-Workout Stretch", 
         duration: "15 min",
         focus: "Target tight hips and hamstrings after exercise.",
@@ -25,7 +29,9 @@ const yogaRoutines = [
     },
 ];
 
+
 const YogaPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="content-page padded-section light-bg">
       <Link to="/dashboard" className="back-link">← Back to Dashboard</Link>
@@ -46,7 +52,7 @@ const YogaPage = () => {
                 <li key={pIndex}>{pose}</li>
               ))}
             </ul>
-            <button className="btn-gradient small-btn" style={{ marginTop: '10px' }}>Start Flow</button>
+            <button className="btn-gradient small-btn"  onClick={() => navigate(`/yoga/flow/${index}`)} style={{ marginTop: '10px' }}>Start Flow</button>
           </div>
         ))}
       </div>

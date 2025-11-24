@@ -1,0 +1,167 @@
+/* -------------------------- */
+/* GLOBAL STYLES */
+/* -------------------------- */
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0f0f0f;
+    color: rgb(233, 231, 231);
+}
+
+/* Background Themes */
+.light-bg {
+    background: linear-gradient(135deg, #0e0e0e, #1b1b1b);
+    min-height: 100vh;
+}
+
+.dark-bg {
+    background: #313331;
+}
+
+/* -------------------------- */
+/* NAVBAR */
+/* -------------------------- */
+
+.static-nav {
+    width: 100%;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.static-nav .logo a {
+    color: rgb(244, 248, 245);
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Back Button */
+.btn-gradient {
+    padding: 10px 22px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #121514, #7dd1ed);
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.btn-gradient:hover {
+    opacity: 0.8;
+}
+
+.large-btn {
+    font-size: 20px;
+    padding: 15px 30px;
+}
+
+/* -------------------------- */
+/* SECTION SPACING */
+/* -------------------------- */
+
+.padded-section {
+    padding: 50px 12%;
+    text-align: center;
+}
+
+/* -------------------------- */
+/* TITLES */
+/* -------------------------- */
+
+.text-gradient {
+    background: linear-gradient(45deg, #c11189, #851871);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: #eab0b0;
+    font-size: 18px;
+    margin-top: -10px;
+    margin-bottom: 40px;
+}
+
+/* -------------------------- */
+/* MAIN CONTENT */
+/* -------------------------- */
+
+.main-nutrition-content {
+    margin-top: 40px;
+}
+
+/* -------------------------- */
+/* CARDS */
+/* -------------------------- */
+
+.card {
+    padding: 25px;
+    border-radius: 18px;
+    width: 100%;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Dark Cards */
+.dark-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+}
+
+.dark-card:hover {
+    background: #222;
+    transform: translateY(-6px);
+}
+
+/* Light Variant Cards */
+.light-card-alt {
+    background: #e8e8e8;
+    color: #111;
+    border: 1px solid #ccc;
+}
+
+.light-card-alt:hover {
+    background: #f2f2f2;
+    transform: translateY(-6px);
+}
+
+/* -------------------------- */
+/* GRID LAYOUT */
+/* -------------------------- */
+
+.core-principles-cards,
+.nutrition-breakdown-cards {
+    display: grid;
+    gap: 20px;
+}
+
+.core-principles-cards {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.nutrition-breakdown-cards {
+    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* -------------------------- */
+/* RESPONSIVE FIXES */
+/* -------------------------- */
+
+@media (max-width: 768px) {
+    .padded-section {
+        padding: 40px 5%;
+    }
+
+    .static-nav {
+        padding: 15px 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+}

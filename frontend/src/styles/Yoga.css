@@ -1,0 +1,172 @@
+/* ---------- PAGE LAYOUT ---------- */
+.content-page {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+}
+
+.padded-section {
+  padding-top: 20px;
+}
+
+.light-bg {
+  background: #f2f7f8;
+}
+
+/* ---------- BACK LINK ---------- */
+.back-link {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #7b4bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- TITLES ---------- */
+.text-gradient {
+  font-size: 34px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #c3b5e9, #ff4fc1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3 {
+  margin-bottom: 20px;
+  color: #9774a0;
+}
+
+/* ---------- LAYOUT: IMAGE + TEXT ---------- */
+.yoga-layout {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.yoga-img {
+  width: 45%;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+}
+
+.yoga-info {
+  width: 55%;
+}
+
+.yoga-info h2 {
+  margin-bottom: 10px;
+  font-size: 26px;
+  color: #e4d9ea;   
+  font-weight: 700;
+}
+
+
+.yoga-info p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #b5a4a4;
+}
+
+/* ---------- VIDEO ROW ---------- */
+.video-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.video-card {
+  min-width: 180px;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  border: 2px solid transparent;
+}
+
+.video-card:hover {
+  transform: scale(1.05);
+  border-color: #7b4bff;
+}
+
+.video-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* ---------- BUTTONS ---------- */
+.yoga-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.yoga-buttons button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(90deg, #7b4bff, #ff4fc1);
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.yoga-buttons button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.yoga-buttons button:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .yoga-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .yoga-img {
+    width: 90%;
+  }
+
+  .yoga-info {
+    width: 100%;
+  }
+
+  .video-row {
+    justify-content: center;
+  }
+}
+/* ---------- YOGA CARDS GRID ---------- */
+.yoga-cards-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* allow wrapping if absolutely needed on very small screens */
+    justify-content: space-between; /* spreads cards evenly */
+    margin-top: 20px;
+}
+
+/* Individual card styling */
+.yoga-cards-grid .card {
+    flex: 1 1 30%; /* grow, shrink, base width 30% */
+    min-width: 250px; /* ensures cards don’t get too small */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+.yoga-cards-grid .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css'; 
+import "../styles/Nutrition.css";
 
 const API_URL = 'http://localhost:5000/api/tasks';
 

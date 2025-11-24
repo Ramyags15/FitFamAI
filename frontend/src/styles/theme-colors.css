@@ -1,0 +1,43 @@
+/* theme-colors.css */
+
+/* Define your color palette */
+:root {
+  --bg-color: #fdfcfc;       /* White background */
+  --text-color: #2e7d32;     /* Dark green text */
+  --subtitle-color: #4caf50; /* Subtitle text */
+  --card-bg: #e8f5e9;        /* Light green cards */
+  --link-color: #2e7d32;     /* Links green */
+  --btn-bg: #2e7d32;         /* Buttons green */
+  --btn-hover: #81c784;      /* Buttons hover */
+}
+
+/* Apply globally */
+body, .light-bg, .dark-bg {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color) !important;
+}
+
+.subtitle {
+  color: var(--subtitle-color) !important;
+}
+
+a {
+  color: var(--link-color) !important;
+}
+
+.card, .dark-card, .light-card, .light-card-alt {
+  background-color: var(--card-bg) !important;
+}
+
+.btn-gradient, .nav-link-btn {
+  background-color: var(--btn-bg) !important;
+  color: white !important;
+}
+
+.btn-gradient:hover, .nav-link-btn:hover {
+  background-color: var(--btn-hover) !important;
+}

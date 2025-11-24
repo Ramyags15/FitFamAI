@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import './App.css'; 
+import './styles/theme-colors.css';
 import NutritionPage from './components/NutritionPage';
 import ChatBox from './components/ChatBox';
 import AITasks from './components/AITasks';     
 import Leaderboard from './components/Leaderboard'; 
 import RoutinePage from './components/RoutinePage';
 import YogaPage from './components/YogaPage';
-import GamePage from './components/GamePage';
+import NutritionGame from './components/NutritionGame';
+import YogaFlow from "./pages/YogaFlow";
+
 const LandingPage = () => {
   return (
     <>
@@ -83,7 +86,7 @@ const LandingPage = () => {
             
             <div className="card light-card">
                 <div className="testimonial-header">
-                    <img src="https://via.placeholder.com/50/FF5733/FFFFFF?text=SJ" alt="Sarah Johnson" className="profile-pic" />
+                    <img src="https://static.vecteezy.com/system/resources/previews/025/869/623/non_2x/round-profile-image-of-woman-avatar-for-social-networks-fashion-beauty-blue-and-black-bright-illustration-in-trendy-style-free-vector.jpg" alt="Sarah Johnson" className="profile-pic" />
                     <div className="testimonial-info">
                         <p className="author">Sarah Johnson</p>
                         <div className="stars">⭐⭐⭐⭐⭐</div>
@@ -97,7 +100,7 @@ const LandingPage = () => {
             </div>
             <div className="card light-card">
                 <div className="testimonial-header">
-                    <img src="https://via.placeholder.com/50/33FF57/FFFFFF?text=MC" alt="Michael Chen" className="profile-pic" />
+                    <img src="https://static.vecteezy.com/system/resources/previews/025/869/585/non_2x/round-profile-image-of-man-avatar-for-social-networks-fashion-beauty-blue-and-black-bright-illustration-in-trendy-style-vector.jpg" alt="Michael Chen" className="profile-pic" />
                     <div className="testimonial-info">
                         <p className="author">Michael Chen</p>
                         <div className="stars">⭐⭐⭐⭐⭐</div>
@@ -111,7 +114,7 @@ const LandingPage = () => {
             </div>
             <div className="card light-card">
                 <div className="testimonial-header">
-                    <img src="https://via.placeholder.com/50/3357FF/FFFFFF?text=JW" alt="Jessica Williams" className="profile-pic" />
+                    <img src="https://static.vecteezy.com/system/resources/previews/025/869/674/original/round-profile-image-of-woman-avatar-for-social-networks-fashion-beauty-blue-and-black-bright-illustration-in-trendy-style-free-vector.jpg" alt="Jessica Williams" className="profile-pic" />
                     <div className="testimonial-info">
                         <p className="author">Jessica Williams</p>
                         <div className="stars">⭐⭐⭐⭐⭐</div>
@@ -292,7 +295,7 @@ const DashboardPage = ({ user, logout }) => {
        <Leaderboard />
       </div>
       <p style={{ marginTop: '50px' }}>
-        This is your personalized dashboard. Let's build the features next!
+        Communicate, make connections and have fun in your fitness journey!
       </p>
     </div>
   );
@@ -342,8 +345,11 @@ export default function App() {
       
         <Route path="/nutrition" element={<NutritionPage />} />
         <Route path="/routine" element={<RoutinePage />} /> 
-        <Route path="/yoga" element={<YogaPage />} />    
-        <Route path="/game" element={<GamePage />} />
+        <Route path="/yoga" element={<YogaPage />} />   
+         <Route path="/yoga/flow/:id" element={<YogaFlow />} />
+
+        <Route path="/game" element={<NutritionGame />} />
+   
       </Routes>
     </Router>
   );
